@@ -1,0 +1,13 @@
+
+.constructor{
+   width: 70%;
+   margin: 200px auto;
+   padding: 40px;
+   background-color: rgba(169, 114, 195, 0.358);
+}
+.constructor form{
+   display: flex;
+   flex-direction: column;
+   gap: 40px;
+   align-items: center;
+}

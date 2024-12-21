@@ -1,0 +1,22 @@
+
+.options{
+   display: flex;
+   align-items: center;
+   justify-content: end;
+   gap: 30px;
+}
+.options__group{
+   position: relative;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+.options__group:not(:last-child)::after{
+   position: absolute;
+   content: '';
+   top: 0;
+   right: -14.5px;
+   width: 1px;
+   height: 100%;
+   background-color: rgba(200, 200, 200, 0.71);
+}
