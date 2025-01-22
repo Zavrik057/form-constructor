@@ -6,10 +6,20 @@
    display: flex;
    flex-direction: column;
    position: relative;
-   overflow: hidden;
    transition: all 0.4s ease;
 }
-.constructor-field.focus::after{
+
+.constructor-field__decor {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   overflow: hidden;
+   border-radius: 10px;
+}
+
+.constructor-field.focus .constructor-field__decor::after {
    position: absolute;
    content: '';
    top: 0;
@@ -18,39 +28,54 @@
    height: 100%;
    background-color: rgb(71, 118, 249);
 }
-.constructor-field__header{
+
+.constructor-field__header {
    width: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
 }
-.constructor-field__icon{
+
+.constructor-field__icon {
    transform: rotate(90deg);
    color: gray;
    opacity: 0;
 }
-.constructor-field:hover .constructor-field__icon{
+
+.constructor-field:hover .constructor-field__icon {
    opacity: 1;
 }
-.constructor-field__main{
+
+.constructor-field__main {
    padding: 0px 0px 40px 0px;
 }
-.constructor-field__row{
+
+.constructor-field__row {
    width: 100%;
    display: grid;
    grid-template-columns: 1fr 40%;
    gap: 20px;
 }
-.constructor-field__form{
+
+.constructor-field__form {
    display: flex;
    flex-direction: column;
-
 }
-.constructor-field__footer{
+
+.constructor-field__button {
+   display: none;
+}
+
+.constructor-field.focus .constructor-field__button {
+   display: block;
+}
+
+.constructor-field__footer {
    padding: 20px 0 0 0;
    border-top: 1px solid rgba(186, 186, 186, 0.772);
    display: none;
 }
-.constructor-field.focus .constructor-field__footer{
+
+.constructor-field.focus .constructor-field__footer {
    display: block;
 }

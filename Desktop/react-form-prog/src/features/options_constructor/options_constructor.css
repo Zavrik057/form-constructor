@@ -1,17 +1,18 @@
-
-.options{
+.options {
    display: flex;
    align-items: center;
    justify-content: end;
    gap: 30px;
 }
-.options__group{
+
+.options__group {
    position: relative;
    display: flex;
    align-items: center;
    gap: 10px;
 }
-.options__group:not(:last-child)::after{
+
+.options__group:not(:last-child)::after {
    position: absolute;
    content: '';
    top: 0;
