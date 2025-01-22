@@ -6,14 +6,16 @@ import { useContext, useEffect, useState } from 'react';
 import { ConstructorState } from '../../../modules/constructor/constructor';
 import { FieldDataState } from '../../../slices/field_constructor/field_constructor';
 import useInput from '../../../hooks/useInput/useInput';
+import { createContext } from 'react';
+import AddItem from './add_item';
 
+export const CheckboxState = createContext(null);
 
 function Checkbox() {
 
    const { items, setItems, currentField } = useContext(ConstructorState);
    const { index } = useContext(FieldDataState);
    const [more, setMore] = useState([{ id: Date.now(), value: '' }]);
-   const [ref, onChange, value] = useInput(changeValue);
 
    function changeValue(ref, index) {
       items[currentField].options[index].value = ref.current.value;
@@ -31,15 +33,12 @@ function Checkbox() {
 
    return (
       <>
-         {currentField == index && <div className="add__content">
-            {items[index].options.map((item, i) => <div key={item.id} className="add__item">
-               <div className="add__icon"><CheckBoxIcon sx={{ fontSize: '26px' }} /></div>
-               <Input inputRef={ref} onChange={(e) => onChange(e, i)} placeholder='set option' className="add__input" inputProps={''} />
-               <div className="add__delete" onClick={() => removeItem(item.id, index)}>{more.length > 1 && <CloseIcon sx={{ color: 'red' }} />}</div>
-            </div>)}
-            <div className="add__more" onClick={addItem}>add option ...</div>
-
-         </div>}
+         <CheckboxState.Provider value={{ removeItem, changeValue, index, more }}>
+            {currentField == index && <div className="add__content">
+               {items[index].options.map((item, i) => <AddItem key={item.id} item={item} i={i} />)}
+               <div className="add__more" onClick={addItem}>add option ...</div>
+            </div>}
+         </CheckboxState.Provider>
       </>
    );
 }

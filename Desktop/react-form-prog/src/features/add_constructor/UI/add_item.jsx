@@ -3,9 +3,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import useInput from '../../../hooks/useInput/useInput';
 import { Input } from '@mui/material';
+import { useContext } from 'react';
+import { CheckboxState } from './checkbox';
 
-function AddItem({ i, more, changeValue, removeItem, item, index }) {
 
+function AddItem({ item, i }) {
+
+   const { removeItem, changeValue, index, more } = useContext(CheckboxState);
    const [ref, onChange, value] = useInput(changeValue);
 
    return (
