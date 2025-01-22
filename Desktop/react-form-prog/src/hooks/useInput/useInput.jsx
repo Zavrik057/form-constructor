@@ -6,7 +6,7 @@ function useInput(event) {
 
    let time;
    function onChange(e, index) {
-      setValue(e.target.value);
+      setValue(ref.current.value);
       window.clearTimeout(time);
 
       time = setTimeout(() => {

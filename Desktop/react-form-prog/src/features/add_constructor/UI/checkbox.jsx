@@ -34,7 +34,7 @@ function Checkbox() {
    return (
       <>
          <CheckboxState.Provider value={{ removeItem, changeValue, index, more }}>
-            {currentField == index && <div className="add__content">
+            {<div className="add__content">
                {items[index].options.map((item, i) => <AddItem key={item.id} item={item} i={i} />)}
                <div className="add__more" onClick={addItem}>add option ...</div>
             </div>}

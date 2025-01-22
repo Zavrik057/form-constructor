@@ -46,7 +46,7 @@
    opacity: 1;
 }
 
-.constructor-field__main {
+.constructor-field__add {
    padding: 0px 0px 40px 0px;
 }
 
@@ -77,5 +77,11 @@
 }
 
 .constructor-field.focus .constructor-field__footer {
+   display: block;
+}
+.constructor-field__add{
+   display: none;
+}
+.constructor-field.focus .constructor-field__add{
    display: block;
 }
