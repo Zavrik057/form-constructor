@@ -12,7 +12,7 @@ function MultipleChoice() {
    const { items, setItems, currentField } = useContext(ConstructorState);
    const { index } = useContext(FieldDataState);
    const [more, setMore] = useState([{ id: Date.now(), value: '' }]);
-   const [ref, onChange, value] = useInput(changeValue);
+   const [ref, onChange] = useInput(changeValue);
 
    function changeValue(ref, index) {
       items[currentField].options[index].value = ref.current.value;
@@ -29,10 +29,10 @@ function MultipleChoice() {
    }
    return (
       <>
-         {currentField == index && <div className="add__content">
+         {<div className="add__content">
             {more.map((item, i) => <div key={item.id} className="add__item">
                <div className="add__icon"><AdjustIcon sx={{ fontSize: '26px' }} /></div>
-               <Input value={value} inputRef={ref} onChange={(e) => onChange(e, i)} placeholder='set option' className="add__input" inputProps={''} />
+               <Input inputRef={ref} onChange={(e) => onChange(e, i)} placeholder='set option' className="add__input" inputProps={''} />
                <div className="add__delete" onClick={() => removeItem(item.id, index)}>{more.length > 1 && <CloseIcon sx={{ color: 'red' }} />}</div>
             </div>)}
             <div className="add__more" onClick={addItem}>add option ...</div>
