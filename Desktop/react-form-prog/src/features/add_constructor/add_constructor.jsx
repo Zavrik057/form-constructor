@@ -2,21 +2,33 @@
 import './add_constructor.css'
 import Checkbox from "./UI/checkbox";
 import ShortAnswer from "./UI/short_answer";
-import Date from "./UI/date";
-import Time from "./UI/time";
 import MultipleChoice from "./UI/multiple_choice";
 import DropDown from "./UI/dropdown";
 import Paragraf from "./UI/paragraf";
-import { useContext } from 'react';
+import { useContext, useEffect, useLayoutEffect } from 'react';
 import { FieldDataState } from '../../slices/field_constructor/field_constructor';
+import { ConstructorState } from '../../modules/constructor/constructor';
+import DateField from './UI/date';
+import Time from './UI/time';
 
 function ContructorAdd() {
 
+   const { items } = useContext(ConstructorState);
+   const { index } = useContext(FieldDataState);
    const { currentType } = useContext(FieldDataState);
+   useEffect(() => {
+      if (currentType != 'short answer') resetOptions();
+   }, [currentType]);
+
+   function resetOptions() {
+      items[index].options = [{ id: Date.now(), value: '' }];
+      console.log(items);
+   }
+
    return (
       <>
          <div className="add">
-            <SetCurrentType currentType={'checkbox'} />
+            <SetCurrentType currentType={currentType} />
          </div>
       </>
    );
@@ -26,7 +38,7 @@ export default ContructorAdd;
 
 function SetCurrentType({ currentType }) {
    switch (currentType) {
-      case 'shortAnswer':
+      case 'short answer':
          return <ShortAnswer />
       case 'paragraf':
          return <Paragraf />
@@ -37,7 +49,7 @@ function SetCurrentType({ currentType }) {
       case 'checkbox':
          return <Checkbox />
       case 'date':
-         return <Date />
+         return <DateField />
       case 'time':
          return <Time />
    }

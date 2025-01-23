@@ -1,13 +1,14 @@
 
 import CloseIcon from '@mui/icons-material/Close';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import { Input } from '@mui/material';
+import { FormControl, Input, InputAdornment, InputLabel } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { ConstructorState } from '../../../modules/constructor/constructor';
 import { FieldDataState } from '../../../slices/field_constructor/field_constructor';
 import useInput from '../../../hooks/useInput/useInput';
 import { createContext } from 'react';
 import AddItem from './add_item';
+import { AccountCircle } from '@mui/icons-material';
 
 export const CheckboxState = createContext(null);
 
@@ -35,7 +36,7 @@ function Checkbox() {
       <>
          <CheckboxState.Provider value={{ removeItem, changeValue, index, more }}>
             {<div className="add__content">
-               {items[index].options.map((item, i) => <AddItem key={item.id} item={item} i={i} />)}
+               {more.map((item, i) => <AddItem key={item.id} item={item} i={i} />)}
                <div className="add__more" onClick={addItem}>add option ...</div>
             </div>}
          </CheckboxState.Provider>

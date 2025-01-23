@@ -1,7 +1,7 @@
 
 import { set, useForm } from 'react-hook-form';
 import './constructor.css'
-import { Fab, Input, rgbToHex } from '@mui/material';
+import { Fab, Input, rgbToHex, Tooltip } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { createContext, useRef, useState } from 'react';
 import ConstructorField from '../../slices/field_constructor/field_constructor';
@@ -51,9 +51,11 @@ function Constructor() {
          <ConstructorState.Provider value={{ changeCurrentField, currentField, removeField, isSubmited, data, setData, items, setItems, doubleField }}>
             <div className="constructor">
                <div className="button-add">
-                  <Fab color="primary" aria-label="add" onClick={addField}>
-                     <AddIcon />
-                  </Fab>
+                  <Tooltip title={'add field'}>
+                     <Fab color="primary" aria-label="add" onClick={addField}>
+                        <AddIcon />
+                     </Fab>
+                  </Tooltip>
                </div>
                <form>
                   {fields.map((item, index) => <ConstructorField key={item} index={index} id={item} />)}
