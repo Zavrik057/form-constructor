@@ -1,15 +1,15 @@
 
 import './add_constructor.css'
-import Checkbox from "./UI/checkbox";
-import ShortAnswer from "./UI/short_answer";
-import MultipleChoice from "./UI/multiple_choice";
-import DropDown from "./UI/dropdown";
-import Paragraf from "./UI/paragraf";
+import Checkbox from "./UI/checkbox/checkbox";
+import ShortAnswer from "./UI/short_answer/short_answer";
+import MultipleChoice from "./UI/multiple_choice/multiple_choice";
+import DropDown from "./UI/dropdown/dropdown";
+import Paragraf from "./UI/paragraf/paragraf";
 import { useContext, useEffect, useLayoutEffect } from 'react';
 import { FieldDataState } from '../../slices/field_constructor/field_constructor';
 import { ConstructorState } from '../../modules/constructor/constructor';
-import DateField from './UI/date';
-import Time from './UI/time';
+import DateField from './UI/date/date';
+import Time from './UI/time/time';
 
 function ContructorAdd() {
 

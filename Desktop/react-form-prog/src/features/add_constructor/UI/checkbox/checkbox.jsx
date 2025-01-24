@@ -1,14 +1,13 @@
 
-import CloseIcon from '@mui/icons-material/Close';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { FormControl, Input, InputAdornment, InputLabel } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { ConstructorState } from '../../../modules/constructor/constructor';
-import { FieldDataState } from '../../../slices/field_constructor/field_constructor';
-import useInput from '../../../hooks/useInput/useInput';
+import { ConstructorState } from '../../../../modules/constructor/constructor';
+import { FieldDataState } from '../../../../slices/field_constructor/field_constructor';
+import useInput from '../../../../hooks/useInput/useInput';
 import { createContext } from 'react';
-import AddItem from './add_item';
 import { AccountCircle } from '@mui/icons-material';
+import CheckboxAddItem from './checkbox_add';
 
 export const CheckboxState = createContext(null);
 
@@ -27,16 +26,16 @@ function Checkbox() {
       items[index].options.push({ id: Date.now(), value: '' });
       setMore([...more, { id: Date.now(), value: '' }]);
    }
-   function removeItem(ident, ind) {
-      setMore(more.filter((item, index) => item.id != ident));
-      items[currentField].options = items[currentField].options.filter(item => item.id != ident);
+   function removeItem(identMore, identItems) {
+      setMore(more.filter((item, index) => item.id != identMore));
+      items[currentField].options = items[currentField].options.filter(item => item.id != identItems);
    }
 
    return (
       <>
          <CheckboxState.Provider value={{ removeItem, changeValue, index, more }}>
             {<div className="add__content">
-               {more.map((item, i) => <AddItem key={item.id} item={item} i={i} />)}
+               {more.map((item, i) => <CheckboxAddItem key={item.id} item={item} i={i} />)}
                <div className="add__more" onClick={addItem}>add option ...</div>
             </div>}
          </CheckboxState.Provider>

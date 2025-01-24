@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-function useInput(event) {
+function useInput( event ) {
    const ref = useRef();
 
    let time;
