@@ -1,0 +1,12 @@
+.repositories {
+   padding: 40px 0;
+   display: flex;
+   flex-direction: column;
+   gap: 50px;
+}
+
+.repositories__banner {
+   font-size: 40px;
+   text-transform: capitalize;
+   text-align: center;
+}

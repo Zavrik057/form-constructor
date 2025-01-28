@@ -17,17 +17,17 @@ function MultipleChoice() {
    const [ref, onChange] = useInput(changeValue);
 
    function changeValue(ref, index) {
-      items[currentField].options[index].value = ref.current.value;
+      items.questions[currentField].options[index].value = ref.current.value;
    }
 
 
    function addItem() {
-      items[index].options.push({ id: Date.now(), value: '' });
+      items.questions[index].options.push({ id: Date.now(), value: '' });
       setMore([...more, { id: Date.now(), value: '' }]);
    }
    function removeItem(identMore, identItems) {
       setMore(more.filter((item, index) => item.id != identMore));
-      items[currentField].options = items[currentField].options.filter(item => item.id != identItems);
+      items.questions[currentField].options = items.questions[currentField].options.filter(item => item.id != identItems);
    }
    return (
       <>

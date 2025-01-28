@@ -1,11 +1,13 @@
 
 import { set, useForm } from 'react-hook-form';
 import './constructor.css'
-import { Fab, Input, rgbToHex, Tooltip } from '@mui/material';
+import { Box, Button, Fab, Input, rgbToHex, Tooltip } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { createContext, useRef, useState } from 'react';
+import { createContext, useContext, useRef, useState } from 'react';
 import ConstructorField from '../../slices/field_constructor/field_constructor';
 import ConstructorSubmitButton from '../../UI/button_constructor/button_constructor';
+import { RepositoriesState } from '../../App/App';
+import HeaderField from '../../slices/header_constructor/header_constructor';
 
 export const ConstructorState = createContext(null);
 
@@ -13,20 +15,46 @@ function Constructor() {
    const [currentField, setCurrentField] = useState(null);
    const [fields, setFields] = useState([Date.now()]);
    const [data, setData] = useState([]);
+   const [header, setHeader] = useState([Date.now()]);
    const [isSubmited, setIsSubmited] = useState(false);
-   const newItem = {
-      id: Date.now(),
-      question: '',
-      required: false,
-      type: 'short answer',
-      options: [{ id: Date.now(), value: '' }],
-      props: [''],
-   };
-   const [items, setItems] = useState([newItem]);
+   const { addRepositorie, repositories, setRepositories } = useContext(RepositoriesState);
+
+   // const newItem = {
+   //    id: Date.now(),
+   //    question: '',
+   //    required: false,
+   //    type: 'short answer',
+   //    options: [{ id: Date.now(), value: '' }],
+   //    props: [''],
+   // };
+
+   const [items, setItems] = useState({
+      headerField: {
+         title: '',
+         text: '',
+      },
+      questions: [{
+         id: Date.now(),
+         question: '',
+         required: false,
+         type: 'short answer',
+         options: [{ id: Date.now(), value: '' }],
+         props: [''],
+      }],
+   });
 
    function addField() {
       setFields([...fields, Date.now()]);
-      setItems([...items, newItem]);
+      setItems({
+         ...items, questions: [...items.questions, {
+            id: Date.now(),
+            question: '',
+            required: false,
+            type: 'short answer',
+            options: [{ id: Date.now(), value: '' }],
+            props: [''],
+         }]
+      });
    }
    function changeCurrentField(index) {
       setCurrentField(index);
@@ -37,12 +65,31 @@ function Constructor() {
          item == id ? num = index : num = num;
       });
       setFields(fields.filter(item => item != id));
-      setItems(items.filter((item, index) => index != num));
+      setItems({ ...items, questions: items.questions.filter((item, index) => index != num) });
+   }
+   function reset() {
+      setItems({
+         headerField: {
+            title: '',
+            text: '',
+         },
+         questions: [{
+            id: Date.now(),
+            question: '',
+            required: false,
+            type: 'short answer',
+            options: [{ id: Date.now(), value: '' }],
+            props: [''],
+         }],
+      });
+      setFields([Date.now()]);
+      setHeader([Date.now()]);
    }
    function submitData() {
-      setIsSubmited(true);
-      console.log(items);
+      addRepositorie(items);
+      reset();
    }
+
    function doubleField(index) {
    }
 
@@ -58,6 +105,7 @@ function Constructor() {
                   </Tooltip>
                </div>
                <form>
+                  {header.map(item => <HeaderField key={item} />)}
                   {fields.map((item, index) => <ConstructorField key={item} index={index} id={item} />)}
                </form>
                <ConstructorSubmitButton submitData={submitData} />

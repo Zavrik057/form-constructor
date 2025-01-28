@@ -20,7 +20,7 @@ function CheckboxAddItem({ item, i }) {
          <div className="add__item">
             <div className="add__icon"><CheckBoxIcon sx={{ fontSize: '26px' }} /></div>
             <Input inputRef={ref} onChange={(e) => onChange(e, i)} placeholder='set option' className="add__input" inputProps={''} />
-            <div className="add__delete" onClick={() => removeItem(item.id, items[index].options[i].id)}>{more.length > 1 && <CloseIcon sx={{ color: 'red' }} />}</div>
+            <div className="add__delete" onClick={() => removeItem(item.id, items.questions[index].options[i].id)}>{more.length > 1 && <CloseIcon sx={{}} />}</div>
          </div>
       </>
    );

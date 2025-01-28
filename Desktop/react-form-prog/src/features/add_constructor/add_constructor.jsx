@@ -21,7 +21,7 @@ function ContructorAdd() {
    }, [currentType]);
 
    function resetOptions() {
-      items[index].options = [{ id: Date.now(), value: '' }];
+      items.questions[index].options = [{ id: Date.now(), value: '' }];
       console.log(items);
    }
 

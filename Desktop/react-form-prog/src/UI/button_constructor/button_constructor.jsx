@@ -7,7 +7,7 @@ function ConstructorSubmitButton({ submitData }) {
          <Button
             type="submit"
             size="large"
-            sx={{ background: 'purple' }}
+            sx={{ background: 'purple', alignSelf: 'center'}}
             variant="contained"
             onClick={submitData}
          >submit</Button>

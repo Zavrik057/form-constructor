@@ -36,4 +36,10 @@
 }
 .add__delete{
    z-index: 5;
+   color: rgb(240, 31, 31);
+   transition: all 0.3s ease;
+}
+.add__delete:hover{
+   color: rgb(220, 134, 134);
+   scale: 1.2;
 }

@@ -42,16 +42,16 @@ function ConstructorField({ index, id }) {
    //    }
    // );
    function changeValue(ref) {
-      items[index].question = ref.current.value;
+      items.questions[index].question = ref.current.value;
    }
 
 
    function changeCurrentType(currentType) {
-      items[index].type = currentType;
+      items.questions[index].type = currentType;
    }
    function changeRequirements(event) {
       setIsRequire(event.target.checked);
-      items[index].required = !isRequire;
+      items.questions[index].required = !isRequire;
    }
    return (
       <>
@@ -68,7 +68,7 @@ function ConstructorField({ index, id }) {
                   <div className="constructor-field__main">
                      <div className="constructor-field__row">
                         <div className="constructor-field__form">
-                           <Input inputRef={ref} onChange={onChange} className='_input' sx={{ fontSize: '1.4em', paddingTop: '10px', paddingBottom: '10px' }} placeholder='Quesction...' inputProps={'description'} />
+                           <Input inputRef={ref} onChange={onChange} className='_input' sx={{ fontSize: '1.4em', paddingTop: '10px', paddingBottom: '10px' }} placeholder='Question...' inputProps={'description'} />
                         </div>
                         <div className="constructor-field__menu">
                            <div className="constructor-field__button">
