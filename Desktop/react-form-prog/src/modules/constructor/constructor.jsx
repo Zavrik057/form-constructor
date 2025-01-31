@@ -5,9 +5,12 @@ import { Box, Button, Fab, Input, rgbToHex, Tooltip } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { createContext, useContext, useRef, useState } from 'react';
 import ConstructorField from '../../slices/field_constructor/field_constructor';
-import ConstructorSubmitButton from '../../UI/button_constructor/button_constructor';
+import SubmitButton from '../../UI/submit_button/button_constructor';
 import { RepositoriesState } from '../../App/App';
 import HeaderField from '../../slices/header_constructor/header_constructor';
+import ColoredButton from '../../UI/colored_button/colored_button';
+import FormButtons from '../../slices/form_buttons/form_buttons';
+import { deepPurple } from '@mui/material/colors';
 
 export const ConstructorState = createContext(null);
 
@@ -30,12 +33,12 @@ function Constructor() {
 
    const [items, setItems] = useState({
       headerField: {
-         title: '',
+         title: 'untitled form',
          text: '',
       },
       questions: [{
          id: Date.now(),
-         question: '',
+         question: 'nothing',
          required: false,
          type: 'short answer',
          options: [{ id: Date.now(), value: '' }],
@@ -48,7 +51,7 @@ function Constructor() {
       setItems({
          ...items, questions: [...items.questions, {
             id: Date.now(),
-            question: '',
+            question: 'nothing',
             required: false,
             type: 'short answer',
             options: [{ id: Date.now(), value: '' }],
@@ -70,12 +73,12 @@ function Constructor() {
    function reset() {
       setItems({
          headerField: {
-            title: '',
+            title: 'untitled form',
             text: '',
          },
          questions: [{
             id: Date.now(),
-            question: '',
+            question: 'nothing',
             required: false,
             type: 'short answer',
             options: [{ id: Date.now(), value: '' }],
@@ -97,18 +100,14 @@ function Constructor() {
       <>
          <ConstructorState.Provider value={{ changeCurrentField, currentField, removeField, isSubmited, data, setData, items, setItems, doubleField }}>
             <div className="constructor">
-               <div className="button-add">
-                  <Tooltip title={'add field'}>
-                     <Fab color="primary" aria-label="add" onClick={addField}>
-                        <AddIcon />
-                     </Fab>
-                  </Tooltip>
-               </div>
                <form>
                   {header.map(item => <HeaderField key={item} />)}
                   {fields.map((item, index) => <ConstructorField key={item} index={index} id={item} />)}
+                  <FormButtons>
+                     <ColoredButton submitData={submitData}>submit</ColoredButton>
+                     <Button onClick={addField} sx={{ color: deepPurple[500], padding: '10px 20px', textTransform: 'capitalize', fontSize: '16px' }}>Add field +</Button>
+                  </FormButtons>
                </form>
-               <ConstructorSubmitButton submitData={submitData} />
             </div>
          </ConstructorState.Provider>
       </>

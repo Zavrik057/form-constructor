@@ -1,7 +1,7 @@
 
 import { Button } from "@mui/material";
 
-function ConstructorSubmitButton({ submitData }) {
+function SubmitButton({ submitData }) {
    return (
       <>
          <Button
@@ -15,4 +15,4 @@ function ConstructorSubmitButton({ submitData }) {
    );
 }
 
-export default ConstructorSubmitButton;
+export default SubmitButton;

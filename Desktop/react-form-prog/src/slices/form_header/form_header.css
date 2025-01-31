@@ -1,0 +1,45 @@
+
+.form-header {
+   padding: 30px 0;
+   border-radius: 10px;
+   background-color: whitesmoke;
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+   overflow: hidden;
+   position: relative;
+}
+.form-header > *:not(:last-child){
+   border-bottom: 1px solid rgb(179, 179, 179);
+}
+.form-header > *{
+   padding: 0 20px 20px;
+}
+.form-header::after{
+   position: absolute;
+   content: '';
+   top: 0;
+   left: 0;
+   width: 120%;
+   height: 8px;
+   background-color: rgb(129, 57, 202);
+   z-index: 2;
+}
+.form-header__header{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+.form-header__title{
+   font-size: 3.2em;
+   text-transform: capitalize;
+}
+.form-header__text{
+   font-size: 1.2em;
+   text-transform: capitalize;
+}
+.form-header__info{
+   color: rgb(226, 64, 64);
+   text-transform: capitalize;
+   font-size: 1.2em;
+}

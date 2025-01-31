@@ -1,0 +1,14 @@
+
+.repositorie-choice{
+   padding: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: whitesmoke;
+}
+.repositorie-block{
+   padding: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}

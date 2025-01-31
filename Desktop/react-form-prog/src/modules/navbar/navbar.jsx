@@ -57,7 +57,7 @@ function Navbar() {
                <div className="navbar__logo">
                   <Link to='/'>
                      <div className="navbar__image">
-                        <img src="./images/logo.png" alt="" />
+                        <img src="./images/logo.png" alt="no image" />
                      </div>
                   </Link>
                   <div className="navbar__title"> form constructor</div>

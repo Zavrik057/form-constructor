@@ -4,8 +4,10 @@ import Navbar from "../../modules/navbar/navbar";
 function ConstructorPage() {
    return (
       <>
-         <Navbar />
-         <Constructor />
+         <div className="wrapper">
+            <Navbar />
+            <Constructor />
+         </div>
       </>
    );
 }

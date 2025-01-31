@@ -1,6 +1,6 @@
 
 .header-field {
-   width: 70%;
+   width: 100%;
    padding: 30px;
    border-radius: 10px;
    background-color: whitesmoke;
@@ -19,13 +19,4 @@
    height: 8px;
    background-color: rgb(129, 57, 202);
    z-index: 2;
-}
-.header-field.focus::before{
-   position: absolute;
-   content: '';
-   top: 0;
-   left: 0;
-   width: 8px;
-   height: 100%;
-   background-color: rgb(72, 149, 237);
 }

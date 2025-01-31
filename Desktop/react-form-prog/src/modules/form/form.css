@@ -1,0 +1,17 @@
+
+.form{
+   padding: 60px 0;
+   background-color: rgb(240, 225, 250);
+   min-height: 80vh;
+}
+.form form{
+   width: 50%;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   flex: 1 1 auto;
+}
+.form.none{
+   display: none;
+}
