@@ -13,8 +13,8 @@ function FormCheckbox() {
    return (
       <>
          <Stack direction={'column'}>
-            {options.map(item => <FormControlLabel
-               value={item.value}
+            {options.map((item, index) => <FormControlLabel
+               value={item.value || `option${index + 1}`}
                control={<Checkbox
                   {...register(question, { required: required })}
                   sx={{
@@ -24,7 +24,7 @@ function FormCheckbox() {
                      },
                   }}
                />}
-               label={item.value}
+               label={item.value || `option${index + 1}`}
                labelPlacement="end"
             />)}
             {errors[question] && <ErrorMessage>this field is required</ErrorMessage>}

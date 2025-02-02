@@ -17,9 +17,12 @@ function Form() {
    const { id, currentLink } = useContext(FormState);
    const { control, register, handleSubmit, formState: { errors, isSubmitSuccessful }, reset } = useForm();
 
+   const [dateIndexes, setDateIndexes] = useState([]);
+
    const submit = data => {
       repositories[id].answers = [...repositories[id].answers, {
-         time: new Date().toLocaleString(),
+         date: new Date().toLocaleDateString(),
+         time: new Date().toLocaleTimeString(),
          response: data,
       }];
       console.log(repositories);
@@ -27,11 +30,11 @@ function Form() {
    }
    return (
       <>
-         <FormSubmitState.Provider value={{ register, control, errors }}>
+         <FormSubmitState.Provider value={{ register, control, errors, setDateIndexes, dateIndexes }}>
             <div className={currentLink === 'questions' ? 'form' : 'form none'}>
                <form onSubmit={handleSubmit(submit)}>
                   <FormHeader data={repositories[id].form.headerField} />
-                  {repositories[id].form.questions.map(item => <FormField key={item.id} data={item} />)}
+                  {repositories[id].form.questions.map((item, index) => <FormField key={item.id} data={item} index={index} />)}
                   <FormButtons>
                      <ColoredButton>submit</ColoredButton>
                      <Button onClick={() => reset()} sx={{ color: deepPurple[500], padding: '10px 20px', textTransform: 'capitalize', fontSize: '16px' }}>Reset</Button>

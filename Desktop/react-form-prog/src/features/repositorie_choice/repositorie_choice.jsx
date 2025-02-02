@@ -1,12 +1,19 @@
-import { Box, Tab, Tabs } from "@mui/material";
-import { useContext, useState } from "react";
+import { Badge, badgeClasses, Box, Tab, Tabs } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
 import './repositorie_choice.css'
 import { deepPurple, purple } from "@mui/material/colors";
 import { FormState } from "../../pages/current_repositorie_page.jsx/currentRepositoriePage";
+import { RepositoriesState } from "../../App/App";
 
 function RepositorieChoice() {
    const [value, setValue] = useState('questions');
-   const { changeCurrentLink } = useContext(FormState);
+   const { changeCurrentLink, id } = useContext(FormState);
+   const { repositories } = useContext(RepositoriesState);
+   const [bagdeValue, setBadgeValue] = useState(0);
+
+   useEffect(() => {
+      setBadgeValue(repositories[id].answers.length);
+   }, [repositories[id].answers]);
 
    function handleChange(event, newValue) {
       setValue(newValue);
@@ -24,8 +31,11 @@ function RepositorieChoice() {
                aria-label="secondary tabs example"
             >
                <Tab value="questions" label="Questions" />
-               <Tab value="answers" label="answers" />
-               <Tab value="settings" label="settings" />
+               <Tab value="answers" label={
+                  <Badge sx={{padding: '10px'}} color="secondary" badgeContent={bagdeValue}>
+                     Answers
+                  </Badge>
+               } />
             </Tabs>
          </div>
       </>

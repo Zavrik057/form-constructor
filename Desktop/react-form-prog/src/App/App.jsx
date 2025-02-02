@@ -4,8 +4,9 @@ import Constructor from '../modules/constructor/constructor';
 import ConstructorPage from '../pages/constructor_page/constructor_page';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RepositoriesPage from '../pages/repositories_page';
 import CurrentRepositoriePage from '../pages/current_repositorie_page.jsx/currentRepositoriePage';
+import RepositoriesPage from '../pages/repositorie_page/repositories_page';
+import AnswerPage from '../pages/answer_page/answer_page';
 
 export const RepositoriesState = createContext(null);
 function App() {
@@ -20,15 +21,18 @@ function App() {
   }
   return (
     <>
-      <RepositoriesState.Provider value={{ repositories, setRepositories, addRepositorie }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<ConstructorPage />} />
-            <Route path='/repositories' element={<RepositoriesPage />} />
-            <Route path='/repositorie/:id' element={<CurrentRepositoriePage />} />
-          </Routes>
-        </BrowserRouter>
-      </RepositoriesState.Provider>
+      <div className="wrapper">
+        <RepositoriesState.Provider value={{ repositories, setRepositories, addRepositorie }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<ConstructorPage />} />
+              <Route path='/repositories' element={<RepositoriesPage />} />
+              <Route path='/repositorie/:id' element={<CurrentRepositoriePage />} />
+              <Route path='/repositorie/:id/answer/:index' element={<AnswerPage />} />
+            </Routes>
+          </BrowserRouter>
+        </RepositoriesState.Provider>
+      </div>
     </>
   );
 }

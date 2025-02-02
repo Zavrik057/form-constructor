@@ -1,0 +1,28 @@
+.answer-response {
+   width: 100%;
+   border-radius: 5px;
+   padding: 20px 0;
+   background-color: whitesmoke;
+}
+
+.answer-response__item {
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+.answer-response__item:not(:last-child){
+   border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+.answer-response__question {
+   font-size: 18px;
+   font-weight: bold;
+   text-transform: capitalize;
+}
+
+.answer-response__response {
+   font-size: 16px;
+   text-transform: capitalize;
+   color: rgb(73, 73, 73);
+}

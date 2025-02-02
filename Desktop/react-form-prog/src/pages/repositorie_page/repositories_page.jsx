@@ -1,5 +1,6 @@
-import Navbar from "../modules/navbar/navbar";
-import Repositories from "../modules/repositories/repositories";
+
+import Navbar from "../../modules/navbar/navbar";
+import Repositories from "../../modules/repositories/repositories";
 
 function RepositoriesPage() {
    return (

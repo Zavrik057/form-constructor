@@ -17,8 +17,6 @@ import axios, { Axios } from 'axios';
 
 function Navbar() {
 
-   const api = 'https://nvnotmjnzrcpvnorscmh.supabase.co';
-   const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im52bm90bWpuenJjcHZub3JzY21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE0NTEzMDYsImV4cCI6MjA0NzAyNzMwNn0.gw6wGUpKqSKJC82ERwa73qEmVEMTIjaXTLiAR_LlE8I';
 
    // useEffect(() => {
    //    fetch('http://localhost:3006/cells')
@@ -52,33 +50,31 @@ function Navbar() {
 
    return (
       <div className="navbar">
-         <div className="container">
-            <div className="navbar__content">
-               <div className="navbar__logo">
-                  <Link to='/'>
-                     <div className="navbar__image">
-                        <img src="./images/logo.png" alt="no image" />
-                     </div>
-                  </Link>
-                  <div className="navbar__title"> form constructor</div>
-               </div>
-               <div className="navbar__icons">
-                  <Stack direction={'row'} spacing={1}>
-                     {icons.map(item => <IconButton >{item}</IconButton>)}
-                     <ColorButton onClick={showRepositories} sx={{ padding: '10px 20px', textTransform: 'capitalize' }}>publish</ColorButton>
-                     <Link to='/repositories'>
-                        <Badge color="secondary" badgeContent={repositories.length}>
-                           <ColorButton sx={{ padding: '10px 20px', textTransform: 'capitalize' }}>repositories</ColorButton>
-                        </Badge>
-                     </Link>
-                     <IconButton>
-                        <MoreVertIcon sx={{ fontSize: size }} />
-                     </IconButton>
-                  </Stack>
-               </div>
-               <div className="navbar__links"></div>
-               <div className="navbar__account"></div>
+         <div className="navbar__content">
+            <div className="navbar__logo">
+               <Link to='/'>
+                  <div className="navbar__image">
+                     <img src="./images/logo.png" alt="no image" />
+                  </div>
+               </Link>
+               <div className="navbar__title"> form constructor</div>
             </div>
+            <div className="navbar__icons">
+               <Stack direction={'row'} spacing={1}>
+                  {icons.map(item => <IconButton >{item}</IconButton>)}
+                  <ColorButton onClick={showRepositories} sx={{ padding: '10px 20px', textTransform: 'capitalize' }}>publish</ColorButton>
+                  <Link to='/repositories'>
+                     <Badge color="secondary" badgeContent={repositories.length}>
+                        <ColorButton sx={{ padding: '10px 20px', textTransform: 'capitalize' }}>repositories</ColorButton>
+                     </Badge>
+                  </Link>
+                  <IconButton>
+                     <MoreVertIcon sx={{ fontSize: size }} />
+                  </IconButton>
+               </Stack>
+            </div>
+            <div className="navbar__links"></div>
+            <div className="navbar__account"></div>
          </div>
       </div>
    );

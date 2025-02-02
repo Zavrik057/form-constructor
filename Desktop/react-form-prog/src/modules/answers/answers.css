@@ -1,0 +1,15 @@
+.answers {
+   padding: 40px 0;
+   display: block;
+}
+.answers.none{
+   display: none;
+}
+
+.answers-grid {
+   margin: 0 auto;
+   width: 80%;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 40px;
+}

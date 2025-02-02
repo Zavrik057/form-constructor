@@ -17,7 +17,7 @@ function MultipleChoice() {
    const [ref, onChange] = useInput(changeValue);
 
    function changeValue(ref, index) {
-      items.questions[currentField].options[index].value = ref.current.value;
+      items.questions[currentField].options[index].value = `${ref.current.value}`;
    }
 
 

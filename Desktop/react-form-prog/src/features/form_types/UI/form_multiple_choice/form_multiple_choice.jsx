@@ -18,9 +18,9 @@ function FormMultipleChoice() {
       <>
          <Stack direction={'column'}>
             <RadioGroup>
-               {options.map(item => <FormControlLabel
+               {options.map((item, index) => <FormControlLabel
                   {...register(question, { required: required })}
-                  value={item.value}
+                  value={item.value || `option${index + 1}`}
                   control={<Radio
                      sx={{
                         color: deepPurple[500],
@@ -28,7 +28,7 @@ function FormMultipleChoice() {
                            color: deepPurple[600],
                         },
                      }} />}
-                  label={item.value} />
+                  label={item.value || `option${index + 1}`} />
                )}
             </RadioGroup>
             {errors[question] && <ErrorMessage>this field is required</ErrorMessage>}

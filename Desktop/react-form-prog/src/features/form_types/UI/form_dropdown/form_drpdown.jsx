@@ -21,12 +21,9 @@ function FormDropdown() {
                   labelId="form-label"
                   sx={{
                      "& .MuiOutlinedInput-notchedOutline": { borderColor: deepPurple[500] },
-                     // "&:focus .MuiOutlinedInput-notchedOutline": {
-                     //    borderColor: 'red'
-                     // }, // Lighter purple focus
                   }}
                >
-                  {options.map(item => <MenuItem value={item.value}>{item.value}</MenuItem>)}
+                  {options.map((item, index) => <MenuItem value={item.value || `option${index + 1}`}>{item.value || `option${index + 1}`}</MenuItem>)}
                </Select>
             </FormControl>
             {errors[question] && <ErrorMessage>this field is required</ErrorMessage>}

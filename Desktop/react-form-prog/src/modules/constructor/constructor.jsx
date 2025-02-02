@@ -15,21 +15,12 @@ import { deepPurple } from '@mui/material/colors';
 export const ConstructorState = createContext(null);
 
 function Constructor() {
-   const [currentField, setCurrentField] = useState(null);
+   const [currentField, setCurrentField] = useState(0);
    const [fields, setFields] = useState([Date.now()]);
    const [data, setData] = useState([]);
    const [header, setHeader] = useState([Date.now()]);
    const [isSubmited, setIsSubmited] = useState(false);
    const { addRepositorie, repositories, setRepositories } = useContext(RepositoriesState);
-
-   // const newItem = {
-   //    id: Date.now(),
-   //    question: '',
-   //    required: false,
-   //    type: 'short answer',
-   //    options: [{ id: Date.now(), value: '' }],
-   //    props: [''],
-   // };
 
    const [items, setItems] = useState({
       headerField: {
@@ -38,7 +29,7 @@ function Constructor() {
       },
       questions: [{
          id: Date.now(),
-         question: 'nothing',
+         question: `question1`,
          required: false,
          type: 'short answer',
          options: [{ id: Date.now(), value: '' }],
@@ -51,7 +42,7 @@ function Constructor() {
       setItems({
          ...items, questions: [...items.questions, {
             id: Date.now(),
-            question: 'nothing',
+            question: `quesiton${items.questions.length + 1}`,
             required: false,
             type: 'short answer',
             options: [{ id: Date.now(), value: '' }],
@@ -78,7 +69,7 @@ function Constructor() {
          },
          questions: [{
             id: Date.now(),
-            question: 'nothing',
+            question: `question1`,
             required: false,
             type: 'short answer',
             options: [{ id: Date.now(), value: '' }],
@@ -90,21 +81,19 @@ function Constructor() {
    }
    function submitData() {
       addRepositorie(items);
+      console.log(items);
       reset();
-   }
-
-   function doubleField(index) {
    }
 
    return (
       <>
-         <ConstructorState.Provider value={{ changeCurrentField, currentField, removeField, isSubmited, data, setData, items, setItems, doubleField }}>
+         <ConstructorState.Provider value={{ changeCurrentField, currentField, removeField, isSubmited, data, setData, items, setItems }}>
             <div className="constructor">
                <form>
                   {header.map(item => <HeaderField key={item} />)}
                   {fields.map((item, index) => <ConstructorField key={item} index={index} id={item} />)}
                   <FormButtons>
-                     <ColoredButton submitData={submitData}>submit</ColoredButton>
+                     <ColoredButton disabled={fields.length > 0 ? false : true} submitData={submitData}>submit</ColoredButton>
                      <Button onClick={addField} sx={{ color: deepPurple[500], padding: '10px 20px', textTransform: 'capitalize', fontSize: '16px' }}>Add field +</Button>
                   </FormButtons>
                </form>

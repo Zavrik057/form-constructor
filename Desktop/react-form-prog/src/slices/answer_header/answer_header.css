@@ -1,0 +1,47 @@
+
+.answer-header {
+   padding: 30px 0;
+   border-radius: 10px;
+   background-color: whitesmoke;
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+   overflow: hidden;
+   position: relative;
+}
+.answer-header > *:not(:last-child){
+   border-bottom: 1px solid rgb(179, 179, 179);
+}
+.answer-header > *{
+   padding: 0 20px 20px;
+}
+.answer-header::after{
+   position: absolute;
+   content: '';
+   top: 0;
+   left: 0;
+   width: 120%;
+   height: 8px;
+   background-color: rgb(129, 57, 202);
+   z-index: 2;
+}
+.answer-header__header{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+.answer-header__title{
+   font-size: 3.2em;
+   text-transform: capitalize;
+}
+.answer-header__text{
+   font-size: 1.2em;
+   text-transform: capitalize;
+}
+.answer-header__timeline{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   font-size: 16px;
+   text-transform: capitalize;
+}

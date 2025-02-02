@@ -18,7 +18,7 @@ function DropDown() {
    const [more, setMore] = useState([{ id: Date.now(), value: '' }]);
 
    function changeValue(ref, index) {
-      items.questions[currentField].options[index].value = ref.current.value;
+      items.questions[currentField].options[index].value = `${ref.current.value}`;
    }
 
 

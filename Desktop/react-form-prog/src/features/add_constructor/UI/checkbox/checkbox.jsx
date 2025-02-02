@@ -18,12 +18,12 @@ function Checkbox() {
    const [more, setMore] = useState([{ id: Date.now(), value: '' }]);
 
    function changeValue(ref, index) {
-      items.questions[currentField].options[index].value = ref.current.value;
+      items.questions[currentField].options[index].value = `${ref.current.value}`;
    }
 
 
    function addItem() {
-      items.questions[index].options.push({ id: Date.now(), value: '' });
+      items.questions[index].options = [...items.questions[index].options, { id: Date.now(), value: '' }];
       setMore([...more, { id: Date.now(), value: '' }]);
    }
    function removeItem(identMore, identItems) {

@@ -2,7 +2,7 @@ import { Button, styled } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 
 
-function ColoredButton({ children, submitData}) {
+function ColoredButton({ children, disabled, submitData }) {
    const ColorButton = styled(Button)(({ theme }) => ({
       color: theme.palette.getContrastText(deepPurple[500]),
       backgroundColor: deepPurple[500],
@@ -13,6 +13,7 @@ function ColoredButton({ children, submitData}) {
    return (
       <>
          <ColorButton
+            disabled={disabled}
             onClick={submitData}
             type="submit"
             sx={
