@@ -79,9 +79,17 @@
 .constructor-field.focus .constructor-field__footer {
    display: block;
 }
-.constructor-field__add{
+
+.constructor-field__add {
    display: none;
 }
-.constructor-field.focus .constructor-field__add{
+
+.constructor-field.focus .constructor-field__add {
    display: block;
+}
+
+@media(max-width: 778px) {
+   .constructor-field__add{
+      padding: 0px 0px 0px 0px;
+   }
 }

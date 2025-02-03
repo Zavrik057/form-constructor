@@ -60,3 +60,16 @@
 .type-button__name{
    font-size: 18px;
 }
+@media (max-width: 1010px) {
+   .type-button__name{
+      font-size: 14px;
+   }
+}
+@media (max-width: 700px) {
+   .type-button__name{
+      font-size: 14px;
+   }
+   .type-button__type{
+      padding: 10px;
+   }
+}

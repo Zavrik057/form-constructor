@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { RepositoriesState } from '../../App/App';
 import axios, { Axios } from 'axios';
+import Burger from '../../UI/burger/burger';
 
 function Navbar() {
 
@@ -44,10 +45,6 @@ function Navbar() {
       },
    }));
 
-   function showRepositories() {
-      console.log(repositories);
-   }
-
    return (
       <div className="navbar">
          <div className="navbar__content">
@@ -62,19 +59,17 @@ function Navbar() {
             <div className="navbar__icons">
                <Stack direction={'row'} spacing={1}>
                   {icons.map(item => <IconButton >{item}</IconButton>)}
-                  <ColorButton onClick={showRepositories} sx={{ padding: '10px 20px', textTransform: 'capitalize' }}>publish</ColorButton>
-                  <Link to='/repositories'>
-                     <Badge color="secondary" badgeContent={repositories.length}>
-                        <ColorButton sx={{ padding: '10px 20px', textTransform: 'capitalize' }}>repositories</ColorButton>
-                     </Badge>
-                  </Link>
-                  <IconButton>
-                     <MoreVertIcon sx={{ fontSize: size }} />
-                  </IconButton>
                </Stack>
             </div>
-            <div className="navbar__links"></div>
-            <div className="navbar__account"></div>
+            <Link to='/repositories'>
+               <Badge color="secondary" badgeContent={repositories.length}>
+                  <ColorButton sx={{ padding: '10px 20px', textTransform: 'capitalize' }}>repositories</ColorButton>
+               </Badge>
+            </Link>
+            <IconButton>
+               <MoreVertIcon sx={{ fontSize: size }} />
+            </IconButton>
+            <Burger />
          </div>
       </div>
    );

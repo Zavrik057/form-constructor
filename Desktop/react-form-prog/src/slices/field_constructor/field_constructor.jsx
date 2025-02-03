@@ -13,6 +13,7 @@ import { Date } from '../../features/types_constructor/types_constructor';
 import useInput from '../../hooks/useInput/useInput';
 import ConstructorAdd from '../../features/add_constructor/add_constructor'
 import DOMPurify from "dompurify";
+import { useViewport } from 'react-viewport-hooks';
 
 export const FieldDataState = createContext(null);
 
@@ -21,6 +22,8 @@ function ConstructorField({ index, id }) {
    const [question, setQuestion] = useState('');
    const [isRequire, setIsRequire] = useState(false);
    const [currentType, setCurrentType] = useState('short answer');
+
+   const { vw } = useViewport();
 
 
    const [ref, onChange] = useInput(changeValue);
@@ -60,7 +63,11 @@ function ConstructorField({ index, id }) {
                               onChange={onChange}
                               defaultValue={'Quesiton' + (index + 1)}
                               className='_input'
-                              sx={{ fontSize: '1.4em', paddingTop: '10px', paddingBottom: '10px' }}
+                              sx={{
+                                 fontSize: vw > 700 ? '1.4em' : '1em',
+                                 paddingTop: '10px',
+                                 paddingBottom: vw > 700 ? '10px' : '2px'
+                              }}
                               placeholder='Question...'
                               inputProps={'description'} />
                         </div>

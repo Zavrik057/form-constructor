@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { CheckboxState } from './checkbox';
 import { Construction, ConstructionSharp } from '@mui/icons-material';
 import { ConstructorState } from '../../../../modules/constructor/constructor';
+import { ConstructorAddState } from '../../add_constructor';
 
 
 function CheckboxAddItem({ item, i }) {
@@ -14,11 +15,12 @@ function CheckboxAddItem({ item, i }) {
    const { items } = useContext(ConstructorState);
    const { removeItem, changeValue, index, more } = useContext(CheckboxState);
    const [ref, onChange] = useInput(changeValue);
+   const { sizeValue } = useContext(ConstructorAddState);
 
    return (
       <>
          <div className="add__item">
-            <div className="add__icon"><CheckBoxIcon sx={{ fontSize: '26px' }} /></div>
+            <div className="add__icon"><CheckBoxIcon sx={{ fontSize: sizeValue }} /></div>
             <Input
                inputRef={ref}
                onChange={(e) => onChange(e, i)}

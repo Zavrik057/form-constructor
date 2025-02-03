@@ -9,6 +9,7 @@ import gsap from "gsap";
 import BackgroundDecor from "../../UI/background_decor/background_decor";
 import ColoredButton from "../../UI/colored_button/colored_button";
 import { Link } from "react-router-dom";
+import VoideAlert from "../../UI/voide_alert/voide_alert";
 
 function Repositories() {
    const { repositories } = useContext(RepositoriesState);
@@ -34,12 +35,12 @@ function Repositories() {
                <Container>
                   <Stack direction={'column'} spacing={6}>
                      <div className="repositories__banner">The repositories</div>
-                     {repositories.length == 0 && <div className="repositorie-alert">
-                        <div className="repositorie-alert__message">you havent's any repositories</div>
-                        <Link to='/' className="repositorie-alert__button">
-                           <ColoredButton>set repositories</ColoredButton>
-                        </Link>
-                     </div>}
+                     {repositories.length == 0 && <VoideAlert
+                        link={'/'}
+                        button={<ColoredButton>set repositorie</ColoredButton>}>
+                        you haven't any repositories
+                     </VoideAlert>
+                     }
                      <Grid2 container spacing={3} columns={3}>
                         {repositories.map((item, index) => <ReposditorieCard key={Date.now()} data={item} index={index} repos={repos} />)}
                      </Grid2>

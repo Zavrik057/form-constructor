@@ -1,28 +1,32 @@
-
-.add{
+.add {
    width: 100%;
    padding: 30px 0;
 }
-.add__content{
+
+.add__content {
    width: 100%;
    display: flex;
    flex-direction: column;
    gap: 10px;
 }
-.add__item{
+
+.add__item {
    width: 100%;
    display: flex;
    align-items: center;
    gap: 20px;
    padding: 0px 20px 0px 0px;
 }
-.add__icon{
+
+.add__icon {
    color: gray;
 }
-.add__input{
+
+.add__input {
    flex: 1 1 auto;
 }
-.add__more{
+
+.add__more {
    margin: 30px 0px 0px 0px;
    text-transform: capitalize;
    border: 1px solid gray;
@@ -34,12 +38,20 @@
    border-radius: 5px;
    z-index: 5;
 }
-.add__delete{
+
+.add__delete {
    z-index: 5;
    color: rgb(240, 31, 31);
    transition: all 0.3s ease;
 }
-.add__delete:hover{
+
+.add__delete:hover {
    color: rgb(220, 134, 134);
    scale: 1.2;
+}
+
+@media(max-width: 778px) {
+   .add__item {
+      gap: 10px;
+   }
 }

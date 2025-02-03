@@ -5,6 +5,8 @@
    align-items: center;
    justify-content: center;
    background-color: white;
+   position: relative;
+   z-index: 20;
 }
 .repositorie-block{
    padding: 20px;

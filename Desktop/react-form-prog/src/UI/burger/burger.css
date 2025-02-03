@@ -1,0 +1,12 @@
+
+.burger{
+   display: none;
+   color: black;
+}
+@media (max-width: 770px) {
+   .burger{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+}

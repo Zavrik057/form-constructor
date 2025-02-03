@@ -29,3 +29,11 @@
    font-size: 20px;
    text-transform: capitalize;
 }
+@media (max-width: 770px) {
+   .navbar__icons{
+      display: none;
+   }
+   .navbar__content {
+      gap: 10px;
+   }
+}
