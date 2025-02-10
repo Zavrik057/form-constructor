@@ -17,7 +17,6 @@ export const ConstructorState = createContext(null);
 
 function Constructor() {
    const [currentField, setCurrentField] = useState(0);
-   const [fields, setFields] = useState([Date.now()]);
    const [data, setData] = useState([]);
    const [header, setHeader] = useState([Date.now()]);
    const [isSubmited, setIsSubmited] = useState(false);
@@ -39,7 +38,6 @@ function Constructor() {
    });
 
    function addField() {
-      setFields([...fields, Date.now()]);
       setItems({
          ...items, questions: [...items.questions, {
             id: Date.now(),
@@ -55,12 +53,7 @@ function Constructor() {
       setCurrentField(index);
    }
    function removeField(id) {
-      let num;
-      fields.forEach((item, index) => {
-         item == id ? num = index : num = num;
-      });
-      setFields(fields.filter(item => item != id));
-      setItems({ ...items, questions: items.questions.filter((item, index) => index != num) });
+      setItems({ ...items, questions: items.questions.filter((_, index) => index != id) });
    }
    function reset() {
       setItems({
@@ -77,11 +70,11 @@ function Constructor() {
             props: [''],
          }],
       });
-      setFields([Date.now()]);
       setHeader([Date.now()]);
    }
    async function submitData() {
       addRepositorie(items);
+      setCurrentField(0);
       await new Promise(resolve => setTimeout(resolve, 100));
       reset();
    }
@@ -92,9 +85,9 @@ function Constructor() {
             <div className="constructor">
                <form>
                   {header.map(item => <HeaderField key={item} />)}
-                  {fields.map((item, index) => <ConstructorField key={item} index={index} id={item} />)}
+                  {items.questions.map((item, index) => <ConstructorField key={item.id} index={index} id={index} />)}
                   <FormButtons>
-                     <ColoredButton disabled={fields.length > 0 ? false : true} submitData={submitData}>submit</ColoredButton>
+                     <ColoredButton disabled={items.questions.length > 0 ? false : true} submitData={submitData}>submit</ColoredButton>
                      <DefaultButton onClick={addField}>add field ...</DefaultButton>
                   </FormButtons>
                </form>

@@ -27,14 +27,12 @@ function Navbar() {
    const { vw } = useViewport();
    const iconsProps = useMemo(() => {
       return {
-        fontSize: '26px',
+         fontSize: '26px',
       }
-   })
-   function show() {
-      console.log(repositories);
-   }
+   }, [vw]);
+
    return (
-      <div className="navbar" onClick={show}>
+      <div className="navbar">
          <NavbarMenu isActive={menuIsActive} />
          <div className="navbar__content">
             <div className="navbar__logo">
@@ -54,7 +52,7 @@ function Navbar() {
                </Badge>
             </Link>
             <IconButton sx={{ display: vw > 770 ? 'block' : 'none' }}>
-               <MoreVertIcon sx={{...iconsProps}} />
+               <MoreVertIcon sx={{ ...iconsProps }} />
             </IconButton>
             <Burger toggle={() => setMenuIsActive(prev => !prev)} />
          </div>
@@ -66,11 +64,11 @@ export default Navbar;
 
 function NavbarIcons({ iconsProps }) {
    const icons = [
-      <PaletteIcon sx={{...iconsProps }} />,
-      <VisibilityIcon sx={{...iconsProps }} />,
-      <ReplayIcon sx={{...iconsProps }} />,
-      <AddLinkIcon sx={{...iconsProps }} />,
-      <PersonAddAltIcon sx={{...iconsProps }} />
+      <PaletteIcon sx={{ ...iconsProps }} />,
+      <VisibilityIcon sx={{ ...iconsProps }} />,
+      <ReplayIcon sx={{ ...iconsProps }} />,
+      <AddLinkIcon sx={{ ...iconsProps }} />,
+      <PersonAddAltIcon sx={{ ...iconsProps }} />
    ];
    return (
       <>

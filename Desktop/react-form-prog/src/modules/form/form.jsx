@@ -10,6 +10,7 @@ import { Button, Checkbox, FormControlLabel, Input, Stack } from "@mui/material"
 import FormButtons from "../../slices/form_buttons/form_buttons";
 import { deepPurple } from "@mui/material/colors";
 import ColoredButton from "../../UI/colored_button/colored_button";
+import DefaultButton from "../../UI/default_button/default_button";
 
 export const FormSubmitState = createContext(null);
 function Form() {
@@ -25,7 +26,6 @@ function Form() {
          time: new Date().toLocaleTimeString(),
          response: data,
       }];
-      console.log(repositories);
       reset();
    }
    return (
@@ -37,7 +37,7 @@ function Form() {
                   {repositories[id].form.questions.map((item, index) => <FormField key={item.id} data={item} index={index} />)}
                   <FormButtons>
                      <ColoredButton>submit</ColoredButton>
-                     <Button onClick={() => reset()} sx={{ color: deepPurple[500], padding: '10px 20px', textTransform: 'capitalize', fontSize: '16px' }}>Reset</Button>
+                     <DefaultButton onClick={() => reset()}>Reset</DefaultButton>
                   </FormButtons>
                </form>
             </div>
