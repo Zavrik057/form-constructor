@@ -1,6 +1,6 @@
 
 import { Grid } from "@mui/icons-material";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { RepositoriesState } from "../../App/App";
 import { Container, Grid2, Stack } from "@mui/material";
 import './repositories.css'
@@ -10,8 +10,10 @@ import BackgroundDecor from "../../UI/background_decor/background_decor";
 import ColoredButton from "../../UI/colored_button/colored_button";
 import { Link } from "react-router-dom";
 import VoideAlert from "../../UI/voide_alert/voide_alert";
+import { useViewport } from "react-viewport-hooks";
 
 function Repositories() {
+   const { vw } = useViewport();
    const { repositories } = useContext(RepositoriesState);
    const repos = useRef([]);
    useEffect(() => {
@@ -31,8 +33,8 @@ function Repositories() {
       <>
          <div className="repositories relative">
             <BackgroundDecor />
-            <div className="repositories-content absolute z-40 inset-0">
-               <Container>
+            <div className="repositories-content z-40 relative">
+               <Container sx={{position: 'relative'}}>
                   <Stack direction={'column'} spacing={6}>
                      <div className="repositories__banner">The repositories</div>
                      {repositories.length == 0 && <VoideAlert
@@ -41,8 +43,11 @@ function Repositories() {
                         you haven't any repositories
                      </VoideAlert>
                      }
-                     <Grid2 container spacing={3} columns={3}>
-                        {repositories.map((item, index) => <ReposditorieCard key={Date.now()} data={item} index={index} repos={repos} />)}
+                     <Grid2
+                        container
+                        spacing={3}
+                        columns={vw > 1010 ? 3 : vw > 580 ? 2 : 1}
+                     >{repositories.map((item, index) => <ReposditorieCard key={index} data={item} index={index} repos={repos} />)}
                      </Grid2>
                   </Stack>
                </Container>

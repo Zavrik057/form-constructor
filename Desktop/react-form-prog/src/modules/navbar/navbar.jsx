@@ -15,38 +15,27 @@ import { useContext, useEffect, useState } from 'react';
 import { RepositoriesState } from '../../App/App';
 import axios, { Axios } from 'axios';
 import Burger from '../../UI/burger/burger';
+import ColoredButton from '../../UI/colored_button/colored_button';
+import { useViewport } from 'react-viewport-hooks';
+import { useMemo } from 'react';
 
 function Navbar() {
 
-
-   // useEffect(() => {
-   //    fetch('http://localhost:3006/cells')
-   //       .then(res => res.json())
-   //       .then(data => console.log(data))
-   //       .catch(err => console.log(err));
-   // }, []);
-
    const { repositories } = useContext(RepositoriesState);
+   const [menuIsActive, setMenuIsActive] = useState(false);
 
-   const size = '26px';
-   const icons = [
-      <PaletteIcon sx={{ fontSize: size }} />,
-      <VisibilityIcon sx={{ fontSize: size }} />,
-      <ReplayIcon sx={{ fontSize: size }} />,
-      <AddLinkIcon sx={{ fontSize: size }} />,
-      <PersonAddAltIcon sx={{ fontSize: size }} />
-   ]
-
-   const ColorButton = styled(Button)(({ theme }) => ({
-      color: theme.palette.getContrastText(deepPurple[500]),
-      backgroundColor: deepPurple[500],
-      '&:hover': {
-         backgroundColor: deepPurple[700],
-      },
-   }));
-
+   const { vw } = useViewport();
+   const iconsProps = useMemo(() => {
+      return {
+        fontSize: '26px',
+      }
+   })
+   function show() {
+      console.log(repositories);
+   }
    return (
-      <div className="navbar">
+      <div className="navbar" onClick={show}>
+         <NavbarMenu isActive={menuIsActive} />
          <div className="navbar__content">
             <div className="navbar__logo">
                <Link to='/'>
@@ -57,22 +46,48 @@ function Navbar() {
                <div className="navbar__title"> form constructor</div>
             </div>
             <div className="navbar__icons">
-               <Stack direction={'row'} spacing={1}>
-                  {icons.map(item => <IconButton >{item}</IconButton>)}
-               </Stack>
+               <NavbarIcons iconsProps={iconsProps} />
             </div>
             <Link to='/repositories'>
                <Badge color="secondary" badgeContent={repositories.length}>
-                  <ColorButton sx={{ padding: '10px 20px', textTransform: 'capitalize' }}>repositories</ColorButton>
+                  <ColoredButton>repositories</ColoredButton>
                </Badge>
             </Link>
-            <IconButton>
-               <MoreVertIcon sx={{ fontSize: size }} />
+            <IconButton sx={{ display: vw > 770 ? 'block' : 'none' }}>
+               <MoreVertIcon sx={{...iconsProps}} />
             </IconButton>
-            <Burger />
+            <Burger toggle={() => setMenuIsActive(prev => !prev)} />
          </div>
       </div>
    );
 }
 
 export default Navbar;
+
+function NavbarIcons({ iconsProps }) {
+   const icons = [
+      <PaletteIcon sx={{...iconsProps }} />,
+      <VisibilityIcon sx={{...iconsProps }} />,
+      <ReplayIcon sx={{...iconsProps }} />,
+      <AddLinkIcon sx={{...iconsProps }} />,
+      <PersonAddAltIcon sx={{...iconsProps }} />
+   ];
+   return (
+      <>
+         <Stack direction={'row'} spacing={1}>
+            {icons.map(item => <IconButton >{item}</IconButton>)}
+         </Stack>
+      </>
+   )
+}
+
+function NavbarMenu({ isActive }) {
+   const { vw } = useViewport();
+   return (
+      <>
+         <div className={isActive && vw < 770 ? "navbar-menu" : "navbar-menu none"}>
+            <NavbarIcons />
+         </div>
+      </>
+   )
+}

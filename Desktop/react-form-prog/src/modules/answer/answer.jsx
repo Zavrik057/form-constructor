@@ -1,5 +1,4 @@
 
-import { useContext } from 'react';
 import './answer.css'
 import AnswerHeader from '../../slices/answer_header/answer_header';
 import AnswerResponse from '../../slices/answer_response/answer_response';

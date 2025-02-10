@@ -25,15 +25,45 @@
    width: 30px;
    height: auto;
 }
-.navbar__title{
+
+.navbar__title {
    font-size: 20px;
    text-transform: capitalize;
 }
+
+.navbar-menu.none {
+   display: none;
+}
+
 @media (max-width: 770px) {
-   .navbar__icons{
+   .navbar__icons {
       display: none;
    }
+
    .navbar__content {
       gap: 10px;
+   }
+   .navbar-menu{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      background-color: white;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 20;
+   }
+}
+
+@media(max-width: 586px) {
+   .navbar__image img {
+      width: 20px;
+   }
+
+   .navbar__title {
+      font-size: 16px;
    }
 }

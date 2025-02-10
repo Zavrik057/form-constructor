@@ -21,3 +21,14 @@
    height: 100%;
    background-color: rgba(200, 200, 200, 0.71);
 }
+@media(max-width: 586px){
+   .options__group {
+      gap: 6px;
+   }
+   .options {
+      gap: 15px;
+   }
+   .options__group:not(:last-child)::after {
+      right: -7px;
+   }
+}

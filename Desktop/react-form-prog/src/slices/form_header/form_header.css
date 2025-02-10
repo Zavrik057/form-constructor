@@ -43,3 +43,11 @@
    text-transform: capitalize;
    font-size: 1.2em;
 }
+@media(max-width: 778px){
+   .form-header__title{
+      font-size: 2em;
+   }
+   .form-header__text{
+      font-size: 0.9em;
+   }
+}

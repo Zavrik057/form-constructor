@@ -45,3 +45,11 @@
    font-size: 16px;
    text-transform: capitalize;
 }
+@media(max-width: 778px){
+   .answer-header__title{
+      font-size: 2em;
+   }
+   .answer-header__text{
+      font-size: 0.9em;
+   }
+}

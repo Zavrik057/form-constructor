@@ -1,10 +1,9 @@
-import { Button, styled } from "@mui/material";
+import { Button } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { useMemo } from "react";
 import { useViewport } from "react-viewport-hooks";
 
-
-function ColoredButton({ children, disabled, submitData }) {
+function DefaultButton({ children, disabled, onClick }) {
 
    const { vw } = useViewport();
 
@@ -14,26 +13,19 @@ function ColoredButton({ children, disabled, submitData }) {
          padding: 'vw > 770' ? '10px 20px' : '3px 7px',
          textTransform: 'capitalize',
          alignSelf: 'center',
+         color: deepPurple[500],
       }
    }, [vw]);
 
-   const ColorButton = styled(Button)(({ theme }) => ({
-      color: theme.palette.getContrastText(deepPurple[500]),
-      backgroundColor: deepPurple[500],
-      '&:hover': {
-         backgroundColor: deepPurple[700],
-      },
-   }));
    return (
       <>
-         <ColorButton
+         <Button
+            onClick={onClick}
             disabled={disabled}
-            onClick={submitData}
-            type="submit"
             sx={{ ...buttonProps }}
-         >{children}</ColorButton>
+         >{children}</Button>
       </>
    );
 }
 
-export default ColoredButton;
+export default DefaultButton;

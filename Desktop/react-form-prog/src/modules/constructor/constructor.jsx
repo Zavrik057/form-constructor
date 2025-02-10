@@ -11,6 +11,7 @@ import HeaderField from '../../slices/header_constructor/header_constructor';
 import ColoredButton from '../../UI/colored_button/colored_button';
 import FormButtons from '../../slices/form_buttons/form_buttons';
 import { deepPurple } from '@mui/material/colors';
+import DefaultButton from '../../UI/default_button/default_button';
 
 export const ConstructorState = createContext(null);
 
@@ -79,9 +80,9 @@ function Constructor() {
       setFields([Date.now()]);
       setHeader([Date.now()]);
    }
-   function submitData() {
+   async function submitData() {
       addRepositorie(items);
-      console.log(items);
+      await new Promise(resolve => setTimeout(resolve, 100));
       reset();
    }
 
@@ -94,7 +95,7 @@ function Constructor() {
                   {fields.map((item, index) => <ConstructorField key={item} index={index} id={item} />)}
                   <FormButtons>
                      <ColoredButton disabled={fields.length > 0 ? false : true} submitData={submitData}>submit</ColoredButton>
-                     <Button onClick={addField} sx={{ color: deepPurple[500], padding: '10px 20px', textTransform: 'capitalize', fontSize: '16px' }}>Add field +</Button>
+                     <DefaultButton onClick={addField}>add field ...</DefaultButton>
                   </FormButtons>
                </form>
             </div>

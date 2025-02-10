@@ -54,4 +54,10 @@
    .add__item {
       gap: 10px;
    }
+
+   .add__more {
+      margin: 15px 0px 0px 0px;
+      padding: 5px 10px;
+      font-size: 12px;
+   }
 }

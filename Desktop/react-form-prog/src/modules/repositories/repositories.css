@@ -1,8 +1,10 @@
 .repositories {
-   padding: 40px 0;
+   flex: 1 1 auto;
+   padding: 40px 0 60px;
    display: flex;
    flex-direction: column;
    gap: 50px;
+   overflow: hidden;
 }
 
 .repositories__banner {

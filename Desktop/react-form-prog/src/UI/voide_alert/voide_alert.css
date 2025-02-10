@@ -3,7 +3,8 @@
    top: 100px;
    left: 50%;
    transform: translateX(-50%);
-   width: 40%;
+   width: 50%;
+   min-width: 540px;
    min-height: 200px;
    padding: 30px;
    border: 1px solid rgb(184, 184, 184);
@@ -23,4 +24,11 @@
 
 .repositorie-alert__button {
    align-self: center;
+}
+
+@media(max-width: 586px) {
+   .repositorie-alert {
+      width: 90%;
+      min-width: 0px;
+   }
 }

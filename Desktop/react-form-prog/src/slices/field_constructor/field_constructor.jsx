@@ -1,5 +1,5 @@
 
-import { createContext, useContext, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
 import './field_constructor.css'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { IconButton, Input, MenuItem } from '@mui/material';
@@ -25,15 +25,16 @@ function ConstructorField({ index, id }) {
 
    const { vw } = useViewport();
 
-
    const [ref, onChange] = useInput(changeValue);
-   const { changeCurrentField, currentField, isSubmited, data, setData, items, setItems } = useContext(ConstructorState);
 
-   function changeValue(ref) {
+   function changeValue() {
       let cleanInput = ref.current.value.replace(/["']/g, "\\$&");
       items.questions[index].question = cleanInput;
       console.log(cleanInput);
    }
+
+   console.log('render');
+   const { changeCurrentField, currentField, isSubmited, data, setData, items, setItems } = useContext(ConstructorState);
 
 
    function changeCurrentType(currentType) {

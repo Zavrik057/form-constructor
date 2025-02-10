@@ -1,13 +1,19 @@
 
 .answer{
    background-color: rgb(240, 225, 250);
-   padding: 40px 0;
+   padding: 40px 0 60px;
    flex: 1 1 auto;
+   overflow: hidden;
 }
 .answer-content{
-   width: 50%;
+   width: 740px;
    margin: 0 auto;
    display: flex;
    flex-direction: column;
    gap: 20px;
+}
+@media(max-width: 778px){
+   .answer-content{
+      width: 90%;
+   }
 }

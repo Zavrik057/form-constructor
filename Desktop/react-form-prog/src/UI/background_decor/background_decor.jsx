@@ -2,10 +2,10 @@
 function BackgroundDecor() {
    return (
       <>
-         <div className="background-decor absolute inset-0">
+         <div className="background-decor absolute min-h-[100vh] overflow-hidden inset-0">
             <div className="relative isolate inset-0 px-16 py-40 sm:py-50 lg:overflow-visible lg:px-0">
-               <div class="absolute inset-0 z-15 overflow-hidden">
-                  <svg class="absolute top-0 left-[max(50%,25rem)] h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
+               <div class="absolute inset-0 z-15 fill-gray-50">
+                  <svg class="min-h-full absolute top-0 left-[max(50%,25rem)] h-[204rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
                      <defs>
                         <pattern id="e813992c-7d03-4cc4-a2bd-151760b470a0" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
                            <path d="M100 200V.5M.5 .5H200" fill="none" />
@@ -19,7 +19,7 @@ function BackgroundDecor() {
                </div>
                <div
                   aria-hidden="true"
-                  className="absolute inset-x-0 -top-40 z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                  className="absolute inset-x-0 -top-40 z-10 transform-gpu blur-3xl sm:-top-80"
                >
                   <div
                      style={{

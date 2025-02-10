@@ -73,3 +73,9 @@
       padding: 10px;
    }
 }
+@media (max-width: 600px) {
+   .type-button{
+      max-width: 50%;
+      min-width: 180px;
+   }
+}
