@@ -5,7 +5,6 @@ function ConstructorPage() {
    return (
       <>
          <div className="wrapper">
-            <Navbar />
             <Constructor />
          </div>
       </>

@@ -7,10 +7,21 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CurrentRepositoriePage from '../pages/current_repositorie_page.jsx/currentRepositoriePage';
 import RepositoriesPage from '../pages/repositorie_page/repositories_page';
 import AnswerPage from '../pages/answer_page/answer_page';
+import ChangeColorTheme from '../features/change_color_theme/change_color_theme';
+import Navbar from '../modules/navbar/navbar';
+import Sidebar from '../modules/sidebar/sidebar';
+import { deepPurple } from '@mui/material/colors';
 
-export const RepositoriesState = createContext(null);
+export const AppState = createContext(null);
 function App() {
 
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+  const [colorTheme, setColorTheme] = useState(
+    {
+      mainColor: deepPurple[500],
+      secondColor: deepPurple[700],
+      bgColor: deepPurple[50]
+    });
   const [repositories, setRepositories] = useState([]);
 
   function addRepositorie(repositorie) {
@@ -22,16 +33,20 @@ function App() {
   return (
     <>
       <div className="wrapper">
-        <RepositoriesState.Provider value={{ repositories, setRepositories, addRepositorie }}>
+        <AppState.Provider value={{ repositories, setRepositories, addRepositorie, sidebarIsOpen, setSidebarIsOpen, colorTheme, setColorTheme }}>
           <BrowserRouter>
-            <Routes>
-              <Route path='/' element={<ConstructorPage />} />
-              <Route path='/repositories' element={<RepositoriesPage />} />
-              <Route path='/repositorie/:id' element={<CurrentRepositoriePage />} />
-              <Route path='/repositorie/:id/answer/:index' element={<AnswerPage />} />
-            </Routes>
+            <Navbar />
+            <main className='main'>
+              <Sidebar />
+              <Routes>
+                <Route path='/' element={<ConstructorPage />} />
+                <Route path='/repositories' element={<RepositoriesPage />} />
+                <Route path='/repositorie/:id' element={<CurrentRepositoriePage />} />
+                <Route path='/repositorie/:id/answer/:index' element={<AnswerPage />} />
+              </Routes>
+            </main>
           </BrowserRouter>
-        </RepositoriesState.Provider>
+        </AppState.Provider>
       </div>
     </>
   );

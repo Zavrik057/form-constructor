@@ -10,7 +10,6 @@ function AnswerPage() {
    return (
       <>
          <AnswerState.Provider value={{ id, index }}>
-            <Navbar />
             <Answer />
          </AnswerState.Provider>
       </>

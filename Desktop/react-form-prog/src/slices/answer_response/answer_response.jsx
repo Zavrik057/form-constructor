@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { RepositoriesState } from "../../App/App";
+import { AppState } from "../../App/App";
 import { AnswerState } from "../../pages/answer_page/answer_page";
 import './answer_response.css'
 
 function AnswerResponse() {
 
    const { id, index } = useContext(AnswerState);
-   const { repositories } = useContext(RepositoriesState);
+   const { repositories } = useContext(AppState);
    const data = repositories[id].answers[index].response;
 
    function handleAnswer(item, answerIndex) {

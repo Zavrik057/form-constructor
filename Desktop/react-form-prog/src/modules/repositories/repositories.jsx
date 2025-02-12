@@ -1,7 +1,7 @@
 
 import { Grid } from "@mui/icons-material";
 import { useContext, useEffect, useRef, useState } from "react";
-import { RepositoriesState } from "../../App/App";
+import { AppState } from "../../App/App";
 import { Container, Grid2, Stack } from "@mui/material";
 import './repositories.css'
 import ReposditorieCard from "../../slices/repositorie_card/repositorie_card";
@@ -14,7 +14,7 @@ import { useViewport } from "react-viewport-hooks";
 
 function Repositories() {
    const { vw } = useViewport();
-   const { repositories } = useContext(RepositoriesState);
+   const { repositories } = useContext(AppState);
    const repos = useRef([]);
    useEffect(() => {
       gsap.from(repos.current, {
@@ -34,7 +34,7 @@ function Repositories() {
          <div className="repositories relative">
             <BackgroundDecor />
             <div className="repositories-content z-40 relative">
-               <Container sx={{position: 'relative'}}>
+               <Container sx={{ position: 'relative' }}>
                   <Stack direction={'column'} spacing={6}>
                      <div className="repositories__banner">The repositories</div>
                      {repositories.length == 0 && <VoideAlert

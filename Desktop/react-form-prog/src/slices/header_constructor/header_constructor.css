@@ -10,13 +10,11 @@
    overflow: hidden;
    position: relative;
 }
-.header-field::after{
+.header-field__decor-line{
    position: absolute;
-   content: '';
    top: 0;
    left: 0;
    width: 120%;
-   height: 8px;
-   background-color: rgb(129, 57, 202);
+   height: 10px;
    z-index: 2;
 }

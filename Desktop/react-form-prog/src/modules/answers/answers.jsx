@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { RepositoriesState } from "../../App/App";
+import { AppState } from "../../App/App";
 import { FormState } from "../../pages/current_repositorie_page.jsx/currentRepositoriePage";
 import AnswerCard from "../../slices/answers_card/answers_card";
 import './answers.css'
@@ -13,7 +13,7 @@ function Answers() {
 
    const { vw } = useViewport();
    const day = dayjs();
-   const { repositories, setRepositories } = useContext(RepositoriesState);
+   const { repositories, setRepositories } = useContext(AppState);
    const { id, currentLink } = useContext(FormState);
 
    return (

@@ -5,7 +5,6 @@ import Repositories from "../../modules/repositories/repositories";
 function RepositoriesPage() {
    return (
       <>
-         <Navbar />
          <Repositories />
       </>
    );

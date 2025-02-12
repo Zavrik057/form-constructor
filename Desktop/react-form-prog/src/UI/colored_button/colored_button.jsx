@@ -1,12 +1,14 @@
 import { Button, styled } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { useViewport } from "react-viewport-hooks";
+import { AppState } from "../../App/App";
 
 
 function ColoredButton({ children, disabled, submitData }) {
 
    const { vw } = useViewport();
+   const { colorTheme } = useContext(AppState);
 
    const buttonProps = useMemo(() => {
       return {
@@ -18,10 +20,10 @@ function ColoredButton({ children, disabled, submitData }) {
    }, [vw]);
 
    const ColorButton = styled(Button)(({ theme }) => ({
-      color: theme.palette.getContrastText(deepPurple[500]),
-      backgroundColor: deepPurple[500],
+      color: theme.palette.getContrastText(colorTheme.mainColor),
+      backgroundColor: colorTheme.mainColor,
       '&:hover': {
-         backgroundColor: deepPurple[700],
+         backgroundColor: colorTheme.secondColor,
       },
    }));
    return (

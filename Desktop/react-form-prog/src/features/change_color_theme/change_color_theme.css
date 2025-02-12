@@ -1,0 +1,17 @@
+
+.change-theme{
+   width: 100%;
+}
+.change-theme__content {
+   padding: 30px;
+}
+
+.change-theme__item {
+   width: 100%;
+   aspect-ratio: 1/1;
+   border-radius: 50%;
+   transition: all 0.3s ease;
+}
+.change-theme__item:hover{
+   scale: 1.1;
+}

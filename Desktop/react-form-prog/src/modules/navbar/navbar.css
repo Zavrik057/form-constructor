@@ -1,6 +1,5 @@
 .navbar {
    width: 100%;
-   background-color: white;
    position: relative;
    z-index: 60;
 }
@@ -24,6 +23,10 @@
 .navbar__image img {
    width: 30px;
    height: auto;
+   transition: all 0.3s ease;
+}
+.navbar__image img:hover{
+   scale: 1.1;
 }
 
 .navbar__title {

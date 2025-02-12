@@ -19,7 +19,6 @@ function CurrentRepositoriePage() {
    return (
       <>
          <FormState.Provider value={{ id, changeCurrentLink, currentLink }}>
-            <Navbar />
             <RepositorieChoice />
             <Form />
             <Answers />

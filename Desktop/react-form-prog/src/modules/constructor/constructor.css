@@ -1,14 +1,6 @@
-.wrapper{
-   width: 100%;
-   min-height: 100vh;
-   top: 0;
-   left: 0;
-   display: flex;
-   flex-direction: column;
-}
+
 .constructor{
-   padding: 40px;
-   background-color: rgb(240, 225, 250);
+   padding: 40px 0;
    display: flex;
    flex-direction: column;
    gap: 20px;
@@ -22,21 +14,8 @@
    gap: 30px;
    align-items: center;
 }
-@media (max-width: 1010px) {
-   .constructor form{
-      width: 500px;
-   }
-}
-@media (max-width: 750px) {
-   .constructor form{
+@media(max-width: 778px){
+   .constructor form {
       width: 90%;
-   }
-}
-@media(max-width: 586px){
-   .constructor{
-      padding: 30px 20px;
-   }
-   .constructor form{
-      width: 100%;
    }
 }

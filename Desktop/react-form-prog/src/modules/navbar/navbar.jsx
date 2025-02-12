@@ -8,11 +8,11 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { styled } from '@mui/material/styles';
 
 import './navbar.css'
-import { Badge, Button, IconButton, Stack } from '@mui/material';
+import { Badge, Button, IconButton, Stack, Tooltip } from '@mui/material';
 import { deepPurple } from '@mui/material/colors';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { RepositoriesState } from '../../App/App';
+import { AppState } from '../../App/App';
 import axios, { Axios } from 'axios';
 import Burger from '../../UI/burger/burger';
 import ColoredButton from '../../UI/colored_button/colored_button';
@@ -21,7 +21,7 @@ import { useMemo } from 'react';
 
 function Navbar() {
 
-   const { repositories } = useContext(RepositoriesState);
+   const { repositories } = useContext(AppState);
    const [menuIsActive, setMenuIsActive] = useState(false);
 
    const { vw } = useViewport();
@@ -63,8 +63,10 @@ function Navbar() {
 export default Navbar;
 
 function NavbarIcons({ iconsProps }) {
+
+   const { setSidebarIsOpen } = useContext(AppState);
+
    const icons = [
-      <PaletteIcon sx={{ ...iconsProps }} />,
       <VisibilityIcon sx={{ ...iconsProps }} />,
       <ReplayIcon sx={{ ...iconsProps }} />,
       <AddLinkIcon sx={{ ...iconsProps }} />,
@@ -73,7 +75,12 @@ function NavbarIcons({ iconsProps }) {
    return (
       <>
          <Stack direction={'row'} spacing={1}>
-            {icons.map(item => <IconButton >{item}</IconButton>)}
+            <Tooltip title="Customize theme" arrow>
+               <IconButton onClick={() => setSidebarIsOpen(true)}>
+                  <PaletteIcon sx={{ ...iconsProps }} />
+               </IconButton>
+            </Tooltip>
+            {icons.map(item => <IconButton>{item}</IconButton>)}
          </Stack>
       </>
    )

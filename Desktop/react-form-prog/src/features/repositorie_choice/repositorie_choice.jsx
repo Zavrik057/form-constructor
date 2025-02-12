@@ -3,12 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import './repositorie_choice.css'
 import { deepPurple, purple } from "@mui/material/colors";
 import { FormState } from "../../pages/current_repositorie_page.jsx/currentRepositoriePage";
-import { RepositoriesState } from "../../App/App";
+import { AppState } from "../../App/App";
 
 function RepositorieChoice() {
    const [value, setValue] = useState('questions');
    const { changeCurrentLink, id } = useContext(FormState);
-   const { repositories } = useContext(RepositoriesState);
+   const { repositories } = useContext(AppState);
    const [bagdeValue, setBadgeValue] = useState(0);
 
    useEffect(() => {
@@ -32,7 +32,7 @@ function RepositorieChoice() {
             >
                <Tab value="questions" label="Questions" />
                <Tab value="answers" label={
-                  <Badge sx={{padding: '10px'}} color="secondary" badgeContent={bagdeValue}>
+                  <Badge sx={{ padding: '10px' }} color="secondary" badgeContent={bagdeValue}>
                      Answers
                   </Badge>
                } />

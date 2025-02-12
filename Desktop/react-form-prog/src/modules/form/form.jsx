@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { RepositoriesState } from "../../App/App";
+import { AppState } from "../../App/App";
 import FormField from "../../slices/form_field/form_field";
 import { FormState } from "../../pages/current_repositorie_page.jsx/currentRepositoriePage";
 import './form.css'
@@ -14,7 +14,7 @@ import DefaultButton from "../../UI/default_button/default_button";
 
 export const FormSubmitState = createContext(null);
 function Form() {
-   const { repositories, setRepositories } = useContext(RepositoriesState);
+   const { repositories, colorTheme } = useContext(AppState);
    const { id, currentLink } = useContext(FormState);
    const { control, register, handleSubmit, formState: { errors, isSubmitSuccessful }, reset } = useForm();
 
@@ -31,7 +31,7 @@ function Form() {
    return (
       <>
          <FormSubmitState.Provider value={{ register, control, errors, setDateIndexes, dateIndexes }}>
-            <div className={currentLink === 'questions' ? 'form' : 'form none'}>
+            <div className={currentLink === 'questions' ? 'form' : 'form none'} style={{ background: colorTheme.bgColor }}>
                <form onSubmit={handleSubmit(submit)}>
                   <FormHeader data={repositories[id].form.headerField} />
                   {repositories[id].form.questions.map((item, index) => <FormField key={item.id} data={item} index={index} />)}

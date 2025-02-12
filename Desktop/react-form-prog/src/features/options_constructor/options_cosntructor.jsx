@@ -11,7 +11,7 @@ import { useViewport } from 'react-viewport-hooks';
 
 function ConstructorOptions({ id }) {
 
-   const { removeField, doubleField } = useContext(ConstructorState);
+   const { removeField, dubbleItem } = useContext(ConstructorState);
    const { changeRequirements, index } = useContext(FieldDataState);
 
    const { vw } = useViewport();
@@ -24,7 +24,7 @@ function ConstructorOptions({ id }) {
       <>
          <div className="options" id='_option__group'>
             <div className="options__group">
-               <IconButton id='copy' className='_copy'>
+               <IconButton id='copy' className='_copy' onClick={() => dubbleItem(index)}>
                   <ContentCopyIcon sx={{ ...iconsProps }} />
                </IconButton>
                <IconButton className='_delete' onClick={() => removeField(id)}>

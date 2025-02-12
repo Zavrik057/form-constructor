@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
 
-function useInput( event ) {
+function useInput(event) {
    const ref = useRef();
+   const [value, setValue] = useState('');
 
    let time;
    function onChange(e, index) {
+      setValue(e.target.value);
       window.clearTimeout(time);
 
       time = setTimeout(() => {
@@ -12,7 +14,7 @@ function useInput( event ) {
       }, 500);
    }
 
-   return [ref, onChange];
+   return [ref, onChange, value];
 }
 
 export default useInput;
