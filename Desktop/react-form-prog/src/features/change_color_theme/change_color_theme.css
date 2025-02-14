@@ -11,6 +11,12 @@
    aspect-ratio: 1/1;
    border-radius: 50%;
    transition: all 0.3s ease;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.change-theme__item.active{
+   scale: 1.2;
 }
 .change-theme__item:hover{
    scale: 1.1;

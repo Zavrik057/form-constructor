@@ -18,6 +18,7 @@ function App() {
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [colorTheme, setColorTheme] = useState(
     {
+      colorName: 'deepPurple',
       mainColor: deepPurple[500],
       secondColor: deepPurple[700],
       bgColor: deepPurple[50]
